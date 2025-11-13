@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="id">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>echa cantik — Elegant Laptop Store</title>
+
+        <!-- Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap"
+            rel="stylesheet">
+
+        <style>
+            :root {
+                --bg1: #f7f6fb;
+                --g1: #e9e6ff;
+                /* soft lavender */
+                --g2: #4673a7;
+                /* silver-blue */
+                --accent: #4b3b8a;
+                /* muted purple */
+                --accent-2: #7ea6ff;
+                /* soft blue */
+                --card: #ffffff;
+                --muted: #7b8aa3;
+                --glass: rgba(255, 255, 255, 0.6);
+                --shadow: 0 10px 30px rgba(60, 64, 87, 0.06);
+            }
+
+            * {
+                box-sizing: border-box
+            }
+
+            html,
+            body {
+                height: 100%;
+                margin: 0
+            }
+
+            body {
+                font-family: 'Poppins', system-ui, Arial;
+                background: linear-gradient(180deg, var(--bg1), #ffffff);
+                color: var(--accent);
+                display: flex;
+                justify-content: center;
+                padding: 28px 14px;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            /* container centered */
+            .wrap {
+                width: 100%;
+                max-width: 1180px
+            }
+
+            /* header */
+            header.header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 12px 6px;
+                margin-bottom: 12px;
+            }
+
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 12px
+            }
+
+            .logo {
+                width: 56px;
+                height: 56px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, var(--g1), var(--g2));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: var(--shadow);
+                font-family: 'Playfair Display', serif;
+                font-weight: 600;
+                color: var(--accent);
+                font-size: 20px;
+            }
+
+            .site-name {
+                font-family: 'Playfair Display', serif;
+                font-size: 20px;
+                color: var(--accent);
+                font-weight: 600
+            }
+
+            .tag {
+                font-size: 12px;
+                color: var(--muted)
+            }
+
+            nav.topnav {
+                display: flex;
+                gap: 14px;
+                align-items: center
+            }
+
+            nav.topnav a {
+                color: var(--accent);
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 14px
+            }
+
+            button.cta {
+                background: linear-gradient(90deg, var(--accent-2), #13358b);
+                color: rgb(18, 82, 177);
+                border: none;
+                padding: 10px 14px;
+                border-radius: 10px;
+                font-weight: 700;
+                cursor: pointer;
+                box-shadow: 0 8px 22px rgba(126, 166, 255, 0.14);
+            }
+
+            /* hero */
+            .hero {
+                display: grid;
+                grid-template-columns: 1fr 360px;
+                gap: 20px;
+                align-items: center
+            }
+
+            .hero-card {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--card));
+                padding: 24px;
+                border-radius: 14px;
+                box-shadow: var(--shadow);
+                transition: transform .35s;
+            }
+
+            .hero-card h1 {
+                margin: 0;
+                font-family: 'Playfair Display', serif;
+                font-size: 30px;
+                color: var(--accent)
+            }
+
+            .hero-card p {
+                margin: 10px 0;
+                color: var(--muted);
+                font-size: 14px
+            }
+
+            .search {
+                display: flex;
+                gap: 8px;
+                margin-top: 6px
+            }
+
+            .search input {
+                flex: 1;
+                padding: 12px;
+                border-radius: 10px;
+                border: 1px solid rgba(75, 59, 138, 0.06);
+                font-size: 14px
+            }
+
+            .search button {
+                padding: 10px 12px;
+                border-radius: 10px;
+                border: 1px solid rgba(75, 59, 138, 0.08);
+                background: transparent;
+                cursor: pointer
+            }
+
+            /* products grid */
+            .products {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 18px;
+                margin-top: 18px
+            }
+
+            .card {
+                border-radius: 12px;
+                padding: 14px;
+                background: linear-gradient(180deg, #fff, #fbfdff);
+                box-shadow: var(--shadow);
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                transition: transform .28s, box-shadow .28s;
+                position: relative;
+                overflow: visible;
+            }
+
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 22px 50px rgba(75, 59, 138, 0.09)
+            }
+
+            .thumb {
+                height: 150px;
+                border-radius: 10px;
+                background: linear-gradient(180deg, var(--g2), #fbfdff);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden
+            }
+
+            .thumb img {
+                max-width: 100%;
+                max-height: 140px;
+                object-fit: contain;
+                display: block
+            }
+
+            .prod-title {
+                font-weight: 700;
+                color: var(--accent);
+                font-size: 15px
+            }
+
+            .short-desc {
+                color: var(--muted);
+                font-size: 13px
+            }
+
+            .specs {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-top: 8px
+            }
+
+            .spec {
+                background: linear-gradient(90deg, #5671c9, #dee0e6);
+                border: 1px solid rgba(51, 20, 173, 0.04);
+                padding: 6px 8px;
+                border-radius: 8px;
+                font-size: 12px;
+                color: var(--accent)
+            }
+
+            .price-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 10px
+            }
+
+            .price {
+                font-weight: 800;
+                color: var(--accent);
+                font-size: 16px
+            }
+
+            .actions {
+                display: flex;
+                gap: 8px
+            }
+
+            .btn {
+                padding: 8px 12px;
+                border-radius: 10px;
+                border: none;
+                cursor: pointer;
+                font-weight: 700
+            }
+
+            .btn.detail {
+                background: transparent;
+                border: 1px solid rgba(75, 59, 138, 0.08);
+                color: var(--accent)
+            }
+
+            .btn.buy {
+                background: linear-gradient(90deg, var(--accent-2), #3f64c0);
+                color: rgb(39, 16, 165);
+                box-shadow: 0 8px 26px rgba(126, 166, 255, 0.12)
+            }
+
+            /* subtle floating glow on buy */
+            .btn.buy:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 18px 40px rgba(126, 166, 255, 0.18);
+            }
+
+            /* price table */
+            .table-wrap {
+                margin-top: 20px
+            }
+
+            table.price-table {
+                width: 100%;
+                border-collapse: collapse;
+                border-radius: 10px;
+                overflow: hidden
+            }
+
+            .price-table thead th {
+                padding: 12px;
+                background: linear-gradient(90deg, var(--g1), var(--g2));
+                color: var(--accent-2);
+                text-align: left;
+                font-weight: 700
+            }
+
+            .price-table tbody td {
+                padding: 12px;
+                background: linear-gradient(90deg, #4a53a8, #7189d3);
+                color: var(--accent)
+            }
+
+            .price-table tbody tr:nth-child(even) td {
+                background: linear-gradient(90deg, #d2d2d3, #d3d8e6)
+            }
+
+            .price-table tbody tr:hover td {
+                background: linear-gradient(90deg, #020e1b, #386ec5)
+            }
+
+            /* profile & map */
+            .bottom {
+                display: grid;
+                grid-template-columns: 1fr 360px;
+                gap: 18px;
+                margin-top: 18px
+            }
+
+            .profile {
+                padding: 14px;
+                border-radius: 10px;
+                background: linear-gradient(180deg, #306697, #fbfdff);
+                box-shadow: var(--shadow);
+                display: flex;
+                gap: 12px;
+                align-items: center
+            }
+
+            .profile img {
+                width: 86px;
+                height: 86px;
+                border-radius: 12px;
+                object-fit: cover;
+                border: 3px solid rgba(255, 255, 255, 0.7)
+            }
+
+            .map iframe {
+                width: 100%;
+                height: 220px;
+                border: 0;
+                border-radius: 10px
+            }
+
+            /* footer */
+            footer.footer {
+                margin-top: 18px;
+                padding: 14px;
+                border-radius: 10px;
+                background: linear-gradient(90deg, #f0eefc, #e9f1ff);
+                text-align: center;
+                color: var(--muted)
+            }
+
+            /* modal (center popup) */
+            .modal-backdrop {
+                position: fixed;
+                inset: 0;
+                background: rgba(10, 12, 25, 0.45);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 1500
+            }
+
+            .modal-backdrop.show {
+                display: flex
+            }
+
+            .modal {
+                width: 100%;
+                max-width: 520px;
+                background: linear-gradient(180deg, #dddddd, #fbfdff);
+                border-radius: 14px;
+                padding: 18px;
+                box-shadow: 0 30px 80px rgba(40, 53, 134, 0.4);
+                transform: scale(.96);
+                opacity: 0;
+                transition: transform .28s ease, opacity .28s ease;
+            }
+
+            .modal.show {
+                transform: scale(1);
+                opacity: 1
+            }
+
+            .modal h3 {
+                margin: 0;
+                font-family: 'Playfair Display', serif;
+                color: var(--accent);
+                font-size: 20px
+            }
+
+            .modal p {
+                margin: 8px 0 12px;
+                color: var(--muted);
+                font-size: 13px
+            }
+
+            .input {
+                width: 100%;
+                padding: 12px;
+                border-radius: 10px;
+                border: 1px solid rgba(75, 59, 138, 0.06);
+                margin-bottom: 10px;
+                font-size: 14px
+            }
+
+            .modal-actions {
+                display: flex;
+                justify-content: flex-end;
+                gap: 8px
+            }
+
+            /* small screens */
+            @media (max-width:920px) {
+                .hero {
+                    grid-template-columns: 1fr
+                }
+
+                .bottom {
+                    grid-template-columns: 1fr
+                }
+
+                nav.topnav {
+                    display: none
+                }
+
+                .logo {
+                    width: 48px;
+                    height: 48px
+                }
+            }
+
+            /* fade-in on load/scroll */
+            .fade {
+                opacity: 0;
+                transform: translateY(14px);
+                transition: opacity .6s ease, transform .6s ease
+            }
+
+            .fade.visible {
+                opacity: 1;
+                transform: none
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrap">
+            <header class="header">
+                <div class="brand">
+                    <div class="logo">E</div>
+                    <div>
+                        <div class="site-name">echa cantik</div>
+                        <div class="tag">Soft Tech • Elegant Choices</div>
+                    </div>
+                </div>
+
+                <nav class="topnav">
+                    <a href="#home">Home</a>
+                    <a href="#produk">Produk</a>
+                    <a href="#profil">Profil</a>
+                </nav>
+
+                <button class="cta" onclick="document.getElementById('search').focus()">Cari</button>
+            </header>
+
+            <!-- HERO -->
+            <section id="home" class="hero">
+                <div class="hero-card fade">
+                    <h1>Welcome to echa cantik</h1>
+                    <p>Curated laptops for professionals, creators, and gamers — soft, modern, and feminine.</p>
+                    <div class="search">
+                        <input id="search" type="search" placeholder="Cari model, CPU, RAM, GPU...">
+                        <button aria-label="Cari">🔎</button>
+                    </div>
+                </div>
+
+                <aside class="hero-card fade" aria-hidden="false">
+                    <div style="font-size:13px;color:var(--muted)">Rekomendasi</div>
+                    <div style="margin-top:10px">
+                        <strong style="color:var(--accent)">Apple MacBook Pro M3 Max</strong>
+                        <div style="font-size:13px;color:var(--muted);margin-top:6px">M3 Max • RAM 36GB • SSD 1TB</div>
+                        <div style="font-weight:800;margin-top:10px;color:var(--accent)">Rp 65.000.000</div>
+                    </div>
+                </aside>
+            </section>
+
+            <!-- PRODUCTS -->
+            <main id="produk">
+                <h2 style="text-align:center;margin-top:18px;color:var(--accent)">Produk Unggulan</h2>
+
+                <div class="products">
+                    <!-- 1 -->
+                    <article class="card fade" data-name="Apple MacBook Pro M3 Max">
+                        <div class="thumb"><img src="https://eworld.id/wp-content/uploads/2024/01/macbook_pro_14-inch_m3_space_grey_1_1_2.jpg" alt="Apple MacBook Pro M3 Max"></div>
+                        <div class="prod-title">Apple MacBook Pro M3 Max</div>
+                        <div class="short-desc">Profesional, ideal untuk editing, development, dan produksi konten.
+                        </div>
+                        <div class="specs">
+                            <span class="spec">CPU: Apple M3 Max (up to 16-core)</span>
+                            <span class="spec">GPU: up to 40-core</span>
+                            <span class="spec">RAM: 36 GB (unified)</span>
+                            <span class="spec">SSD: 1 TB</span>
+                            <span class="spec">Layar: 14.2" Liquid Retina XDR</span>
+                        </div>
+                        <div class="price-row">
+                            <div class="price">Rp 65.000.000</div>
+                            <div class="actions">
+                                <button class="btn detail"
+                                    onclick="openDetail('Apple MacBook Pro M3 Max')">Detail</button>
+                                <button class="btn buy" onclick="openModal('Apple MacBook Pro M3 Max')">Beli
+                                    Sekarang</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 2 -->
+                    <article class="card fade" data-name="ASUS ROG Strix SCAR 18">
+                        <div class="thumb"><img src="https://dlcdnwebimgs.asus.com/files/media/982b43f2-03f0-4780-b552-cf2a58d515bf/v1/images/m-kv_1.webp" alt="ASUS ROG Strix SCAR 18"></div>
+                        <div class="prod-title">ASUS ROG Strix SCAR 18</div>
+                        <div class="short-desc">Flagship gaming untuk performa maksimal (AAA titles & content
+                            rendering).</div>
+                        <div class="specs">
+                            <span class="spec">CPU: Intel Core i9-14900HX</span>
+                            <span class="spec">GPU: NVIDIA RTX 4080 16GB</span>
+                            <span class="spec">RAM: 32 GB DDR5</span>
+                            <span class="spec">SSD: 2 TB NVMe</span>
+                            <span class="spec">Layar: 18" QHD+ 240 Hz</span>
+                        </div>
+                        <div class="price-row">
+                            <div class="price">Rp 52.000.000</div>
+                            <div class="actions">
+                                <button class="btn detail"
+                                    onclick="openDetail('ASUS ROG Strix SCAR 18')">Detail</button>
+                                <button class="btn buy" onclick="openModal('ASUS ROG Strix SCAR 18')">Beli
+                                    Sekarang</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 3 -->
+                    <article class="card fade" data-name="ASUS ROG Zephyrus G14">
+                        <div class="thumb"><img src="https://id.store.asus.com/media/catalog/product/z/e/zephyrus_g14_grey_02_l_rgb_1.jpg?width=800&height=800&store=id_ID&image-type=image" alt="ASUS ROG Zephyrus G14"></div>
+                        <div class="prod-title">ASUS ROG Zephyrus G14</div>
+                        <div class="short-desc">Portable powerhouse: balance antara mobilitas & performa.</div>
+                        <div class="specs">
+                            <span class="spec">CPU: AMD Ryzen 9 8945HS</span>
+                            <span class="spec">GPU: NVIDIA RTX 4060 8GB</span>
+                            <span class="spec">RAM: 16 GB DDR5</span>
+                            <span class="spec">SSD: 1 TB NVMe</span>
+                            <span class="spec">Layar: 14" QHD+ 165 Hz</span>
+                        </div>
+                        <div class="price-row">
+                            <div class="price">Rp 25.000.000</div>
+                            <div class="actions">
+                                <button class="btn detail" onclick="openDetail('ASUS ROG Zephyrus G14')">Detail</button>
+                                <button class="btn buy" onclick="openModal('ASUS ROG Zephyrus G14')">Beli
+                                    Sekarang</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 4 -->
+                    <article class="card fade" data-name="Dell XPS 13 9345">
+                        <div class="thumb"><img src="https://cdnp.cody.mn/spree/images/2665275/large/Dell_XPS_13_9345_Laptop_-_Graphite.png" alt="Dell XPS 13 9345"></div>
+                        <div class="prod-title">Dell XPS 13 9345</div>
+                        <div class="short-desc">Ultraportable premium: layar tajam, build quality tinggi.</div>
+                        <div class="specs">
+                            <span class="spec">CPU: Qualcomm Snapdragon X Elite</span>
+                            <span class="spec">GPU: Adreno X1-85</span>
+                            <span class="spec">RAM: 16 GB LPDDR5x</span>
+                            <span class="spec">SSD: 512 GB</span>
+                            <span class="spec">Layar: 13.4" OLED 3K</span>
+                        </div>
+                        <div class="price-row">
+                            <div class="price">Rp 25.000.000</div>
+                            <div class="actions">
+                                <button class="btn detail" onclick="openDetail('Dell XPS 13 9345')">Detail</button>
+                                <button class="btn buy" onclick="openModal('Dell XPS 13 9345')">Beli Sekarang</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 5 -->
+                    <article class="card fade" data-name="HP Pavilion x360 14">
+                        <div class="thumb"><img src="https://els.id/wp-content/uploads/2023/10/HP-Pavilion-14-X360-Blue-6.png" alt="HP Pavilion x360 14"></div>
+                        <div class="prod-title">HP Pavilion x360 14</div>
+                        <div class="short-desc">Convertible 2-in-1 — cocok untuk presentasi, menulis, multimedia.</div>
+                        <div class="specs">
+                            <span class="spec">CPU: Intel Core i7-1355U</span>
+                            <span class="spec">GPU: Intel Iris Xe</span>
+                            <span class="spec">RAM: 16 GB</span>
+                            <span class="spec">SSD: 1 TB</span>
+                            <span class="spec">Layar: 14" Touch FHD</span>
+                        </div>
+                        <div class="price-row">
+                            <div class="price">Rp 13.000.000</div>
+                            <div class="actions">
+                                <button class="btn detail" onclick="openDetail('HP Pavilion x360 14')">Detail</button>
+                                <button class="btn buy" onclick="openModal('HP Pavilion x360 14')">Beli
+                                    Sekarang</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 6 -->
+                    <article class="card fade" data-name="Lenovo LOQ 15IAX9I">
+                        <div class="thumb"><img src="https://p4-ofp.static.pub//fes/cms/2024/05/20/d6onrgwtki5a57q687ztkqftuog5mf017643.png" alt="Lenovo LOQ 15IAX9I"></div>
+                        <div class="prod-title">Lenovo LOQ 15IAX9I</div>
+                        <div class="short-desc">Value gaming: performa solid untuk pelajar & gamer kasual.</div>
+                        <div class="specs">
+                            <span class="spec">CPU: Intel Core i5-13420H</span>
+                            <span class="spec">GPU: NVIDIA RTX 2050 4GB</span>
+                            <span class="spec">RAM: 16 GB DDR5</span>
+                            <span class="spec">SSD: 512 GB</span>
+                            <span class="spec">Layar: 15.6" FHD 144 Hz</span>
+                        </div>
+                        <div class="price-row">
+                            <div class="price">Rp 12.000.000</div>
+                            <div class="actions">
+                                <button class="btn detail" onclick="openDetail('Lenovo LOQ 15IAX9I')">Detail</button>
+                                <button class="btn buy" onclick="openModal('Lenovo LOQ 15IAX9I')">Beli Sekarang</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div> <!-- end products -->
+
+                <!-- price table -->
+                <div class="table-wrap fade">
+                    <table class="price-table" aria-label="Daftar harga laptop">
+                        <thead>
+                            <tr>
+                                <th>Jenis Laptop</th>
+                                <th>Spesifikasi Singkat</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apple MacBook Pro M3 Max</td>
+                                <td>M3 Max • RAM 36GB • SSD 1TB • 14.2" Liquid Retina</td>
+                                <td>Rp 65.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>ASUS ROG Strix SCAR 18</td>
+                                <td>i9-14900HX • RTX 4080 • RAM 32GB • SSD 2TB</td>
+                                <td>Rp 52.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>ASUS ROG Zephyrus G14</td>
+                                <td>Ryzen 9 8945HS • RTX 4060 • RAM 16GB • SSD 1TB</td>
+                                <td>Rp 25.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Dell XPS 13 9345</td>
+                                <td>Snapdragon X Elite • 16GB LPDDR5x • SSD 512GB • 13.4" OLED</td>
+                                <td>Rp 25.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>HP Pavilion x360 14</td>
+                                <td>i7-1355U • 16GB • SSD 1TB • Touch 14"</td>
+                                <td>Rp 13.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Lenovo LOQ 15IAX9I</td>
+                                <td>i5-13420H • RTX 2050 • 16GB • SSD 512GB</td>
+                                <td>Rp 12.000.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+            <!-- profile & map -->
+            <section class="bottom fade">
+                <div id="profil" class="profile">
+                    <img src="/WhatsApp Image 2025-10-22 at 15.11.31 (1) - Copy.jpeg" alt="echa cantik">
+                    <div>
+                        <div style="font-weight:700;color:var(--accent)">echa cantik — Soft Tech</div>
+                        <div style="color:var(--muted);margin-top:6px">Toko resmi, melayani garansi & after-sales. Jam
+                            buka Senin–Sabtu 07:00–19:00</div>
+                        <div style="color:var(--muted);margin-top:8px">Kontak: +0815-6578-9090</div>
+                    </div>
+                </div>
+
+                <div id="alamat" class="map">
+                    <iframe src="https://www.google.com/maps?q=SMK+Negeri+3+Medan+Jl+STM&output=embed" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+
+            <footer class="footer fade">
+                © <span id="yr"></span> echa cantik• SMK Negeri 3 Medan
+            </footer>
+        </div>
+
+        <!-- MODAL LOGIN (center popup) -->
+        <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+            <div id="modalBox" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <h3 id="modalTitle">Masuk untuk Lanjutkan</h3>
+                    <button aria-label="Tutup" style="background:transparent;border:none;font-size:18px;cursor:pointer"
+                        onclick="closeModal()">✕</button>
+                </div>
+                <p>Masukkan email dan password untuk melanjutkan proses pembelian. (Form ini contoh — belum terhubung ke
+                    server.)</p>
+
+                <form id="buyForm" onsubmit="event.preventDefault(); submitForm();">
+                    <input id="modalProduct" type="text" readonly hidden>
+                    <input id="email" class="input" type="email" placeholder="Email" required>
+                    <input id="password" class="input" type="password" placeholder="Password" required>
+                    <div class="modal-actions">
+                        <button type="button" class="btn detail" onclick="closeModal()">Batal</button>
+                        <button type="submit" class="btn buy">Masuk & Lanjutkan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            // fade-in on load/scroll
+            const fades = document.querySelectorAll('.fade');
+            function reveal() {
+                fades.forEach(el => {
+                    const r = el.getBoundingClientRect();
+                    if (r.top < window.innerHeight - 60) el.classList.add('visible');
+                });
+            }
+            window.addEventListener('load', reveal);
+            window.addEventListener('scroll', reveal);
+
+            // modal control
+            const modalBackdrop = document.getElementById('modalBackdrop');
+            const modalBox = document.getElementById('modalBox');
+
+            function openModal(productName) {
+                document.getElementById('modalProduct').value = productName;
+                modalBackdrop.classList.add('show');
+                modalBackdrop.setAttribute('aria-hidden', 'false');
+                modalBox.classList.add('show');
+                document.body.style.overflow = 'hidden';
+                // focus email
+                setTimeout(() => document.getElementById('email').focus(), 200);
+            }
+            function closeModal() {
+                modalBackdrop.classList.remove('show');
+                modalBackdrop.setAttribute('aria-hidden', 'true');
+                modalBox.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            function submitForm() {
+                const email = document.getElementById('email').value;
+                const product = document.getElementById('modalProduct').value || 'produk';
+                alert('Terima kasih, ' + email + ' — pesanan untuk: ' + product + ' akan diproses. (Demo)');
+                closeModal();
+            }
+
+            // simple detail
+            function openDetail(name) {
+                alert('Detail singkat: ' + name + '\nLihat spesifikasi pada card produk.');
+            }
+
+            // set year
+            document.getElementById('yr').textContent = new Date().getFullYear();
+        </script>
+    </body>
+
+</html>
